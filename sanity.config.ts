@@ -1,8 +1,8 @@
-
-import {defineConfig} from 'sanity'
-import {structureTool} from 'sanity/structure'
-import {visionTool} from '@sanity/vision'
-import {schemaTypes} from './schemaTypes'
+import { defineConfig } from 'sanity'
+import { deskTool } from 'sanity/desk'
+import { visionTool } from '@sanity/vision'
+import { schemaTypes } from './schemaTypes'
+import customStructure from './schemaTypes/structure'
 
 export default defineConfig({
   name: 'default',
@@ -11,7 +11,11 @@ export default defineConfig({
   projectId: 'rpufi5bg',
   dataset: 'production',
 
-  plugins: [structureTool(), visionTool()],
+ plugins: [
+  deskTool({ structure: customStructure }),
+  visionTool()
+],
+
 
   schema: {
     types: schemaTypes,
